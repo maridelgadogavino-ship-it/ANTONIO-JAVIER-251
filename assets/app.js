@@ -33,7 +33,13 @@ if(form){
     }
     const invite=document.body.dataset.invite;
     const phone="34675257907"; // provisional
-    const msg=`Hola, soy ${name}. Confirmo mi asistencia al 25 cumpleaños de Antonio Javier.\nInvitación: ${invite}\nRespuesta: ${answer.value}`;
+    let msg;
+
+if (answer.value === "Sí, allí estaré") {
+  msg = `Hola, soy ${name}. Confirmo mi asistencia al 25 cumpleaños de Antonio Javier.\nInvitación: ${invite}\nRespuesta: ${answer.value}`;
+} else {
+  msg = `Hola, soy ${name}. No podré asistir al 25 cumpleaños de Antonio Javier.\nInvitación: ${invite}\nRespuesta: ${answer.value}`;
+}
     const url=`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
     window.location.href=url;
     status.textContent="Abriendo WhatsApp…";
